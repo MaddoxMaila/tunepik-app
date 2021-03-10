@@ -66,9 +66,9 @@
 		 	</div>
 
 
-		 		<div class="media pt-2 pb-2">
+		 		<div class="media pt-2 pb-2" style="width:100%;">
 		 			
-		 			<div class="media-left align-self-center b-media">
+		 			<div class="media-left align-self-center">
 		 				
 		 				<clipper-upload v-model="image.src">
 		 					
@@ -78,7 +78,7 @@
 
 		 			</div>
 		 			<div class="media-body align-self-center pl-2" style="width:100%;"></div>
-		 			<div class="media-right align-self-center b-media">
+		 			<div class="media-right align-self-center">
 		 				
 		 				<label for="video-input">
 		 					<Icon :icon="'vidupload'" :height="24" :width="24"></Icon>
