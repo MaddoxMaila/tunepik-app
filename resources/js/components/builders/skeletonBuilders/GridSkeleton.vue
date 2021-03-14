@@ -1,13 +1,13 @@
 <template>
 
-	<div class="wrapper">
+	<div class="wrapper p-2">
 	   
 	   <masonry
 			   :cols="squares"
 			   :gutter="{default : '3px', 700 : '3px', 400 : '3px'}"
 					>
 	   		
-	   		<div class="skeleton-shimmer" :class="[classes]" v-for="(item, i) in list"></div>
+	   		<div class="skeleton-shimmer p-3" :class="[classes]" v-for="(item, i) in list"></div>
 
 	   </masonry>
 
@@ -83,16 +83,16 @@
 
 			.three-cols{
 				width: 100%;
-				height: 120px;
-				margin: 0 0 1.5px 0;
-				border-radius: 15px;
+				height: 160px;
+				margin: 0 0 3px 0;
+				border-radius: 5px;
 			}
 
 			.two-cols{
 				width : 100%;
-				height: 120px;
-				margin: 0 0 1.5px 0;
-				border-radius: 15px;
+				height: 160px;
+				margin: 0 0 3px 0;
+				border-radius: 5px;
 			}
 
 		}

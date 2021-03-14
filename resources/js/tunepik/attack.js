@@ -563,6 +563,15 @@ class NotificationModel extends UserModel{
 
     }
 
+    this.extras = {
+
+      post        : args.notif_post ? new globs.model.post(args.notif_post) : null,
+      sharedPost  : args.notif_share_post ? new globs.model.post(args.notif_share_post) : null,
+      extraType   : args.notif_extra_type,
+
+
+    }
+
   } // End Of Constructor
 
   setSeen(){
@@ -570,6 +579,8 @@ class NotificationModel extends UserModel{
   }
 
   getNotification(){ return this.notif; }
+
+  getExtra(){ return this.extras }
 
 } // End Of Class
 

@@ -3,7 +3,7 @@
 	<span>
 		
 		<span class="app-bolder-text">{{ user.getBasic().name }}</span><verified :user="user"></verified>
-	   <span class="profile-user-handle app-user-text" style="display: block;line-height: 1;">
+	   <span class="profile-user-handle app-grey-text-sm" style="display: block;line-height: 1;">
 	      @{{ user.getBasic().handle }}
 	   </span>
 
@@ -16,7 +16,16 @@
 	export default {
 
 		name : 'UserName',
-		props : ['user'],
+		props : ['user', 'limit'],
+		computed : {
+
+			lim : function(){
+
+				return this.limit ? this.limit : 30
+
+			}
+
+		}
 
 	};
 	

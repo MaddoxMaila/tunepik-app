@@ -8,9 +8,9 @@
       <div class="space-large visible-lg"></div>
       <div class="space-large visible-lg"></div>
 
-      <div class="card">
+      <div class="card no-border">
         
-        <div class="card-header" v-if="!screen">
+        <div class="card-header no-border" v-if="!screen">
 
           <div class="media">
             
@@ -23,39 +23,39 @@
             </div>
             <div class="media-right align-self-center">
                 
-                <button @click="toRegister()" class="btn btn-info">
+                <v-button @click.native="toRegister()" :type="'primary'">
                   
                   Create Account
 
-                </button>
+                </v-button>
 
             </div>
 
           </div>
 
         </div>
-        <div class="card-body">
+        <div class="card-body no-border">
 
           <div class="wrapper" v-if="screen">
 
             <div class="media">
-            <div class="media-left">
-              <Name></Name>
-            </div>
-            <div class="media-body align-self-center ml-2">
-              
-              
+              <div class="media-left">
+                <Name></Name>
+              </div>
+              <div class="media-body align-self-center ml-2">
+                
+                
+
+              </div>
+              <div class="media-right align-self-center">
+
+                <v-button @click.native="toRegister()" :type="'primary'">
+                  Create Account
+                </v-button>
+
+              </div>
 
             </div>
-            <div class="media-right align-self-center">
-
-              <v-button @click.native="toRegister()" :type="'primary'">
-                Create Account
-              </v-button>
-
-            </div>
-
-          </div>
 
           <div class="space-large visible-xs"></div>
           
@@ -116,7 +116,7 @@
 
                 </div>
                 <div class="media-body"></div>
-                <div class="media-right">
+                <div class="media-right pl-2">
                   
                   <router-link :to="{ name : 'selfie' }" >
                     <v-button @click.native="" :type="'primary'">

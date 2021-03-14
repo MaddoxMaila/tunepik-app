@@ -29,8 +29,9 @@
             <div class="media-body align-self-center pl-3">
               
               <span class="app-max-text">
-                {{ headerText }}
+                Block
               </span>
+              <span class="block-text app-grey-text-lg">(@{{ user.getBasic().handle }})</span>
 
             </div>
             <div class="media-right align-self-center">

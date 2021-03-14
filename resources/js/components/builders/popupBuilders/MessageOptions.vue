@@ -42,7 +42,7 @@
 
 		<div class="list-group-item no-border">
 			
-			<BlockButton :User="user"></BlockButton>
+			<BlockButton :user="user" :classes="'btn-block input-block-level btn-sm'"></BlockButton>
 
 		</div>
 

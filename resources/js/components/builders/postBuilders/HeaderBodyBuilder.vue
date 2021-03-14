@@ -58,6 +58,9 @@
               <span class="app-max-text">
                 Options <!-- {{ headerText }} -->
               </span>
+              <span class="block-text app-grey-text-lg">
+                (@{{ post.getBasic().handle }})
+              </span>
 
             </div>
             <div class="align-self-center media-right">

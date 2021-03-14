@@ -135,15 +135,7 @@ export default {
     path : function(){return this.pathname},
 
   },
-
   methods: {
-    async logout () {
-      // Log out the user.
-      await this.$store.dispatch('auth/logout')
-
-      // Redirect to login.
-      this.$router.push({ name: 'login' })
-    },
     makeColor : function(icon){
 
       let keys = ['home', 'search', 'messages', 'add', 'notifications']
@@ -154,7 +146,7 @@ export default {
 
           this.colors[keys[i]] = this.theme.icons.type === 'default' ? this.theme.colors.blue : this.theme.icons.color
 
-          this.bg[keys[i]] = this.colors[keys[i]]
+          this.bg[keys[i]] = `rgba(211, 211, 211, .125)`
 
           this.indicatorColor = this.colors[keys[i]]
 
@@ -274,7 +266,7 @@ export default {
   }
 
   .app-badge{
-    position: relative;
+    position: fixed;
     left: 4px;
   }
 

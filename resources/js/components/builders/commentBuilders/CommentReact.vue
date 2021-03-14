@@ -4,9 +4,9 @@
 	
 		<a @click="like()">
 
-			<Icon :icon="'heart'" :width="18" :height="18" :color="'red'" v-if="comment.getStats().isLiked"></Icon>
+			<Icon :icon="'heart'" :width="iconSize" :height="iconSize" :color="'red'" v-if="comment.getStats().isLiked"></Icon>
 
-			<Icon :icon="'heartEmpty'" :width="18" :height="18" v-else></Icon>
+			<Icon :icon="'heartEmpty'" :width="iconSize" :height="iconSize" v-else></Icon>
 
 		</a>
 		<span class="app-grey-text-sm" v-if="comment.getStats().likeCount > 0">{{ comment.getStats().likeCount }}</span>
@@ -26,6 +26,7 @@
 		data 		: () => ({
 
 			animate : false,
+			iconSize : 16
 
 		}),
 		props   : ['comment'],

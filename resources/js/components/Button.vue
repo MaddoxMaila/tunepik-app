@@ -10,6 +10,8 @@
   </button>
 </template>
 
+<!-- box-shadow : 0 0 0 .2rem !default rgba( , .25) !default -->
+
 <script>
 
 import { mapGetters } from 'vuex'

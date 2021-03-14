@@ -1,18 +1,7 @@
 <template>
 
 		 
-		<div class="user-card-wrapper mt-1" v-show="!hide">
-
-			<div class="media">
-				<div class="media-body"></div>
-				<div class="media-right align-self-center">
-					
-					<a @click="hide = !hide">
-						<i class="app-fa fa fa-times"></i>
-					</a>
-
-				</div>
-			</div>
+		<div class="user-card-wrapper mt-1">
 
 			<!-- User Image! -->
 				<div class="user-image-wrap pt-2">
@@ -25,11 +14,9 @@
 				   	  	
 				   	  	<router-link :to="{ name : 'profile', params : { username : user.getBasic().handle } }" >
 
-				            <span class="app-bold-text">
 				              <a @click="SET_PROFILE(user)">
-						   	  			{{ trim(user.getBasic().name, 14) }}
+						   	  			<user-name :user="user" :limit="14"></user-name>
 						   	  		</a>
-				   	  		</span>
 
 				   	  	</router-link>
 
@@ -139,7 +126,7 @@
 
         name       : "UserCardBuilder",
         data : () => ({
-        	hide : false
+        	
         }),
         components : {
 
@@ -191,6 +178,7 @@
 				  -webkit-box-shadow: 0 .5px 1px rgba(0, 0, 0, .175);
 	        box-shadow: 0 .5px 1px rgba(0, 0, 0, .175);
 	        border-radius: 12px;
+	        background-color: rgba(211, 211, 211, .125);
 			}
 
 		}

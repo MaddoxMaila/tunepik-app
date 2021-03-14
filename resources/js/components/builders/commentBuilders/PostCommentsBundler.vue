@@ -9,16 +9,16 @@
          </div>
          <div v-else>
            
-          <div v-if="postComments.list" class="comments list-group pl-1 pr-1">
+          <div v-if="postComments.list" class="comments">
 
-              <template v-for="(CommentModel, index) in postComments.comments">
+              <div class="list-group" v-for="(CommentModel, index) in postComments.comments">
 
-                <CommentBodyBuilderTwo :comment="CommentModel" ></CommentBodyBuilderTwo>
+                <CommentBodyBuilderTwo class="list-group-item no-border" :comment="CommentModel" ></CommentBodyBuilderTwo>
 
-              </template>
+              </div>
 
            </div>
-           <div v-else>
+           <div class="pt-4" v-else>
              
              <div class="app-deleted-post grey-matter p-2">
                
@@ -91,10 +91,8 @@
 
 <style scoped>
 
-  .list-group{
-
-    border-top: .05em solid rgba(211, 211, 211, .4);
-
+  .list-group-item{
+    border-bottom: .03em solid rgba(211, 211, 211, .125);
   }
 
 </style>

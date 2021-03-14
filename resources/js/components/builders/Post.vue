@@ -39,9 +39,9 @@
 
       <!-- Show One Comment If Post Has Comment! -->
         
-        <div class="feed-comment-wrapper mt-1" v-if="post.getComment().has && comments">
+        <div class="feed-comment-wrapper mt-1 pt-2 no-border" v-if="post.getComment().has && comments">
           
-           <CommentBodyBuilder :comment="post.getComment().comment" class="pl-2 pr-2"></CommentBodyBuilder>
+           <CommentBodyBuilderTwo :comment="post.getComment().comment" class="pl-2 pr-2"></CommentBodyBuilderTwo>
 
         </div>
 
@@ -66,7 +66,7 @@
   import DeletedBodyBuilder from './postBuilders/DeletedBodyBuilder'
   import ReactionBodyBuilder from './postBuilders/ReactionBodyBuilder'
   import ShareBodyBuilder from './postBuilders/ShareBodyBuilder'
-  import CommentBodyBuilder from './commentBuilders/CommentBodyBuilder'
+  import CommentBodyBuilderTwo from './commentBuilders/CommentBodyBuilderTwo'
 
 
     export default {
@@ -90,7 +90,7 @@
           ReactionBodyBuilder,
           HeaderBodyBuilder,
           ShareBodyBuilder,
-          CommentBodyBuilder
+          CommentBodyBuilderTwo
 
         },
         props       : ['post', 'comments']

@@ -2,13 +2,17 @@
 
 	<div class="media">
 
-		<div class="user-img-wrapper align-self-center">
+		<div class="user-img-wrapper align-self-start">
  			 	
 	 	  <Picture :height="35" :width="35" :user="notification"></Picture>
 
 	 </div>
-		
-		<div class="media-body pl-2" >
+
+	 <div class="media-body align-self-center">
+	 	
+	 	<div class="media">
+	 		
+	 		<div class="media-body pl-3 align-self-center">
 		 	 			
 			  <span class="app-grey-text-lg" v-if="notification.getNotification().count - 1 <= 0">
 		 			
@@ -22,24 +26,37 @@
 		 			 Commented Your Post
 		 		</span>
 
-		</div>
+			</div>
 
-		<div class="media-right align-self-center">
-			
-			<Icon :icon="'comment'" :width="28" :height="28" ></Icon>
+			<div class="media-right align-self-center">
+				
+				<Icon :icon="'comment'" :width="16" :height="16" ></Icon>
 
-		</div>
+			</div>
+
+	 	</div>
+
+	 	<div class="space-medium"></div>
+	 	<ShareBodyBuilder :post="notification.getExtra().post" v-if="notification.getExtra().post"></ShareBodyBuilder>
+
+	 </div>
+	
 
 	</div>
 	
 </template>
 
 <script type="text/javascript">
+
+	import ShareBodyBuilder from '../postBuilders/ShareBodyBuilder'
 	
 	export default {
 
 		name : 'CommentNotification',
-		props : ['notification']
+		props : ['notification'],
+		components : {
+			ShareBodyBuilder
+		}
 
 	};
 

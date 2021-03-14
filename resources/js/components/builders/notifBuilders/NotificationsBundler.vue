@@ -2,10 +2,8 @@
 <div>
 	 <div class="" v-if="notifications.loading">
 
+	 		<NotificationSkeleton></NotificationSkeleton>
 	 	
-	 	<NotificationSkeleton></NotificationSkeleton>
-	 	
-
 	 </div>
 	 <div v-else>
 	 	
@@ -14,13 +12,15 @@
 
 	 	 	<div class="list-group" v-for="(notification, index) in notifications.notifs">
 
-	 	 		<div class="list-group-item list-group-item-action no-border">
+	 	 		<div class="list-group-item list-group-item-action">
 
 	 	 			<LikesNotification :notification="notification" v-if="notification.getNotification().notifType == 'like'"></LikesNotification>
 
 	 	 			<CommentNotification :notification="notification" v-else-if="notification.getNotification().notifType == 'comment'"></CommentNotification>
 
 	 	 			<FollowNotification :notification="notification" v-else-if="notification.getNotification().notifType == 'Started Following You' || notification.getNotification().notifType == 'Unfollowed You'"></FollowNotification>
+
+	 	 			<ShareNotification :notification="notification" v-else-if="notification.getNotification().notifType == 'share'"></ShareNotification>
 
 	 	 			<MentionNotification :notification="notification" v-else></MentionNotification>
 	 	 			
@@ -65,6 +65,7 @@
 	import FollowNotification from './FollowNotification'
 	import LikesNotification from './LikesNotification'
 	import MentionNotification from './MentionNotification'
+	import ShareNotification from './ShareNotification'
 
   export default {
 
@@ -80,7 +81,8 @@
   		CommentNotification,
   		FollowNotification,
   		LikesNotification,
-  		MentionNotification
+  		MentionNotification,
+  		ShareNotification
   	},
   	props : ['notifications']
 
@@ -99,12 +101,12 @@
 
    }
 
- /*  .list-group-item{
+   .list-group-item{
 
 			border : 0;
-			padding: 5px;
+			border-bottom: .04em solid rgba(211, 211, 211, .175)
 
-		}*/
+		}
 
    .like-icon{
    	color: red;

@@ -121,6 +121,9 @@
 	            	entries.forEach((entry) => {
 	            		console.log(entry)
 	            		if(entry.intersectionRatio > .20){
+
+                            console.log(entry)
+
 	            		}
 
 	            	});

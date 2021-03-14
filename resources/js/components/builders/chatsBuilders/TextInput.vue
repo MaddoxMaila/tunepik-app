@@ -269,10 +269,8 @@
 			border-radius: 10px;
 			background-color: rgba(211, 211, 211, .4);
 		}
-		.navbar{
-			/*padding-left: 4px;
-			padding-top: 2px;
-			padding-bottom: 2px;*/
+		.fixed-bottom{
+			height: 50px
 		}
 
 </style>

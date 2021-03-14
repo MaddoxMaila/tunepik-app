@@ -67,7 +67,8 @@
 
                   </Navigation>
 
-			           	<Post :post="atComments.post" :comments="false"></Post>
+			           	<!-- <Post :post="atComments.post" :comments="false"></Post> -->
+                  <CommentPost :post="atComments.post"></CommentPost>
 
 			           </template>
 			           <template v-else>
@@ -177,6 +178,7 @@
   import ShareBodyBuilder from '../postBuilders/ShareBodyBuilder'
   import PostCommentsBundler from './PostCommentsBundler'
   import Post from '../Post'
+  import CommentPost from '../CommentPost'
   import SinglePostSkeleton from '../skeletonBuilders/SinglePostSkeleton'
   import Navigation from '../../mobile/root/Navigation'
   import CommentPop from '../popupBuilders/CommentPop'
@@ -196,7 +198,8 @@
         	Post,
           SinglePostSkeleton,
           Navigation,
-          CommentPop
+          CommentPop,
+          CommentPost
 
         },
         data    		: () => {

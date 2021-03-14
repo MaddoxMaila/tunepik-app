@@ -9,7 +9,7 @@
         <router-link :to="{ name : 'profile', params : { username : user.getBasic().handle } }">
           
           <v-button @click.native="SET_PROFILE(user)" :block="true" :type="'primary'">
-            Your Acc
+            Your Profile
           </v-button>
 
         </router-link>
@@ -38,14 +38,17 @@
 
             <div class="media-left align-self-center">
               
-              <Picture :width="35" :height="35" :user="user"></Picture>
+              <Picture :width="40" :height="40" :user="user"></Picture>
 
             </div>
             
             <div class="media-body align-self-center pl-3">
               
               <span class="app-max-text">
-                {{ headerText }}
+                Unfollow
+              </span>
+              <span class="block-text app-grey-text-lg">
+                @{{ user.getBasic().handle }}
               </span>
 
             </div>
@@ -66,7 +69,7 @@
           
               <div class="list-group-item">
                 <center>
-                  <span class="app-grey-text-lg">
+                  <span class="app-small-text">
                     Are You Sure You Want To Unfollow 
                     <span class="app-bolder-text">
                     @{{ user.getBasic().handle }}?
@@ -212,7 +215,7 @@
           ...mapGetters('tunepik', ['overlay']),
           headerText : function(){
 
-            return `Unfollow @${this.user.getBasic().handle}`;
+            return `Unfollow`; /*@${this.user.getBasic().handle}*/
 
           },
           btnStyle : function(){

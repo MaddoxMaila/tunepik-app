@@ -12514,13 +12514,13 @@ body.swal2-no-backdrop .swal2-shown.swal2-bottom-right {
 }
 
 .main-wrap.fade-in {
-  -webkit-animation: overlayfadein 0.5s;
-  animation: overlayfadein 0.5s;
+  /*-webkit-animation: overlayfadein 0.5s;
+  animation: overlayfadein 0.5s;*/
 }
 
 .main-wrap.fade-out {
-  -webkit-animation: overlayfadeout 0.5s;
-  animation: overlayfadeout 0.5s;
+  /*-webkit-animation: overlayfadeout 0.5s;
+  animation: overlayfadeout 0.5s;*/
 }
 
 @-webkit-keyframes overlayfadein {
@@ -15593,6 +15593,15 @@ https://flickity.metafizzy.co
     background-color: #222;
   }
 
+  .main-layout.theme-dark .form-control {
+    background-color: #343a40;
+    color: #fff;
+  }
+
+  .main-layout.theme-dark .upload-text {
+    color: #fff;
+  }
+
   .main-layout.theme-dark .react-round {
     box-shadow: 0 0.5px 1px rgba(211, 211, 211, 0.1);
   }
@@ -15715,6 +15724,15 @@ https://flickity.metafizzy.co
   .main-layout.theme-dim .bg-white,
   .main-layout.theme-dim .record-bottom {
     background-color: #343a40;
+  }
+
+  .main-layout.theme-dim .form-control {
+    background-color: #222;
+    color: #fff;
+  }
+
+  .main-layout.theme-dim .upload-text {
+    color: #fff;
   }
 
   .main-layout.theme-dim .react-round {

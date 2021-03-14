@@ -14,21 +14,22 @@
 
 						<div class="media">
 							
-							<div class="media-left align-self-center">
+							<!-- <div class="media-left align-self-center">
 								
 								<Picture :height="30" :width="30" :user="user.model" class="ml-2"></Picture>
 
-							</div>
+							</div> -->
 							<div class="media-body ml-2 align-self-center">
 								
 								<span class="app-max-text text-top">
 									<router-link :to="{ name : 'profile', params : { username : userName } }">
-										<span class="profile-user-name app-max-text">
+										<!-- <span class="profile-user-name app-max-text">
 			                {{ trim(user.model.getBasic().name, 12) }}
 			              </span>
 			              <span class="profile-user-handle app-post-text" style="display: block;line-height: 1;">
 			                @{{ user.model.getBasic().handle }}
-			              </span>
+			              </span> -->
+			              <user-name :user="user.model" :limit="12"></user-name>
 									</router-link>
 								</span>
 
@@ -47,9 +48,9 @@
 
 					</span>
 
-					<div class="overlay-wrap" v-show="show" style="z-index:999999;">
+					<div class="overlay-wrap" v-show="show">
 						
-						<div class="main-wrap card no-border" v-show="show" :class="[show ? 'fade-in' : 'fade-out']" style="z-index:999999;">
+						<div class="main-wrap card no-border" v-show="show" :class="[show ? 'fade-in' : 'fade-out']">
 							
 							<div class="media card-header no-border">
 								
@@ -106,9 +107,9 @@
 						
 						<center>
 							
-							<div class="profile-wrap mb-1">
+							<!-- <div class="profile-wrap mb-1">
 								<router-link :to="{ name : 'profile', params : { username : user.model.getBasic().handle } }">
-									<!-- <image-loader :src="user.model.getImgs().profile" width="90px" height="90px" class="rounded-circle" /> -->
+								
 									<Picture :width="90" :height="90" :user="user.model"></Picture>
 								</router-link>
 
@@ -126,7 +127,9 @@
 
 		            </span>
 
-		          </div>
+		          </div> -->
+
+		          <UserCardBuilder :user="user.model"></UserCardBuilder>
 
 						</center>
 
@@ -161,7 +164,7 @@
 
 			</div>
 
-			<TextInput></TextInput>
+			<TextInput class="text-input-msg"></TextInput>
 				
 			</div>
 		</template>
@@ -181,6 +184,7 @@
 		import UserFollowsBuilder from '../profileBuilders/UserFollowsBuilder'
 		import WorkFiles from '../uploadBuilders/WorkFiles'
 		import MessageOptions from '../popupBuilders/MessageOptions'
+		import UserCardBuilder from '../userBuilders/UserCardBuilder'
 
 		export default {
 
@@ -205,7 +209,8 @@
 				MessageSkeleton,
 				WorkFiles,
 				MessageOptions,
-				TextInput
+				TextInput,
+				UserCardBuilder
 
 			},
 			methods    : {
@@ -223,10 +228,10 @@
 										.private(`messages-event.${this.ID.from}.${this.ID.to}`)
 										.listen('.incoming-messages', messages => {
 
-											console.log(messages)
-											this.FETCH_MESSAGES(messages)
+										console.log(messages)
+										this.FETCH_MESSAGES(messages)
 
-						})
+					})
 
 				},
 		},
@@ -249,11 +254,9 @@
 			},
 			created     : function(){
 
-				
+				if(!this.user.model) this.getUser(this.userName);
 
-					if(!this.user.model) this.getUser(this.userName);
-
-					this.getMessages(this.userName);
+				this.getMessages(this.userName);
 
 				this.$nextTick(function(){
 					
@@ -262,11 +265,7 @@
 				});
 
 			},
-			mounted : function(){
-
-				
-
-			},
+			mounted : function(){},
 			watch : {
 
 				'user.model' : function(user){
@@ -288,6 +287,15 @@
 
 
 		@media only screen and (max-width: 700px){
+
+			.text-input-msg{
+				z-index: 9999 !important;
+			}
+
+			.overlay-wrap,
+			.main-wrap{
+				z-index: 99999 !important;
+			}
 
 			.file-wrapper{
 

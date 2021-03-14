@@ -27,7 +27,7 @@
 			<div class="space-large"></div>
 			<div class="space-large"></div>
 
-			<div class="over-wrap card-body">
+			<div class="over-wrap card-body no-border">
 				<div class="form-group row">
 		      <label class="col-md-3 col-form-label text-md-right">
 		      	Your Username
@@ -130,10 +130,12 @@
 	@media only screen and (max-width: 700px){
 
 		.card-body,
+		.card-header,
     .card{
       width: 100%;
       height: 100%;
       min-width: 100%;
+      border : 0;
     }
 
 		.card {

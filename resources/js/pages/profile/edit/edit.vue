@@ -25,7 +25,7 @@
 
 								</div>
 								<div class="media-right">
-									<Name></Name>
+									<!-- <Name></Name> -->
 								</div>
 
 							</Navigation>
@@ -88,10 +88,62 @@
 
 									<div class="list-group-item" v-if="item.index == 5">
 										<center>
-											<v-button :type="'danger'" :large="true" :block="true">
+											<v-button @click.native="show = !show" :type="'danger'" :large="true" :block="true">
 												Logout
 											</v-button>
 										</center>
+
+
+										<div class="overlay-wrap" v-show="show">
+											
+											<div class="main-wrap card no-border" v-show="show" :class="[ show ? 'fade-in' : 'fade-out']">
+												
+												<div class="card-header no-border">
+													
+													<div class="media">
+														<Picture :width="40" :height="40" :user="model"></Picture>
+														<div class="media-body pl-3 align-self-center">
+															
+															<user-name :user="model"></user-name>
+
+														</div>
+														<div class="media-right align-self-center">
+															<a @click="show = !show">
+								                <i class="fa fa-times app-fa"></i>
+								              </a>
+														</div>
+													</div>
+
+												</div>
+
+												<div class="card-body no-border list-group">
+													
+													<div class="list-group-item">
+														<center>
+															<span class="app-small-text">
+															Are you sure want Logout?
+														</span>
+														</center>
+													</div>
+													<div class="list-group-item">
+														
+														<v-button :loading="loading" @click.native="logout()" :type="'primary'" class="mobile-share-control-btn yes">
+        
+						                  Logout
+
+						                </v-button>
+						                <v-button @click.native="show = !show" :type="'danger'" class="mobile-share-control-btn no">
+						                  Cancel
+						                </v-button>
+
+													</div>
+
+												</div>
+
+											</div>
+
+										</div>
+
 									</div>
 
 									</template>
@@ -134,6 +186,8 @@
 			 		return {
 
 			 			screen 	: globs.app.isMobile,
+			 			show : false,
+			 			loading : false
 
 			 		};
 
@@ -141,6 +195,20 @@
 			 components : {
 
 			 		Navigation
+
+			 },
+			 methods : {
+
+			 	async logout () {
+
+			 		this.loading = true
+		      // Log out the user.
+		      await this.$store.dispatch('auth/logout')
+
+		      this.loading = false
+		      // Redirect to login.
+		      this.$router.push({ name: 'login' })
+		    }
 
 			 },
 			 computed : {

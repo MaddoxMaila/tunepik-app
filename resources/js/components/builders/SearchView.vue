@@ -70,11 +70,8 @@
 								</span>
 
 							</div>
-							<div class="" v-else>
-								
-								<HashTagBundler :message="search.data.tags.message" :tags="search.data.tags.hashes"></HashTagBundler>
 
-							</div>
+							<HashTagBundler :message="search.data.tags.message" :tags="search.data.tags.hashes" v-else></HashTagBundler>
 
 						</div>
 
@@ -86,16 +83,24 @@
 						<div class="card-body p-2">
 							
 							<router-link :to="{ name : 'results', query : { type : 'posts' }, params : { term : q } }">
-							<div class="media">
+							
+							<div class="go-to-posts-wrap pl-3 pr-3 p-1">
+								<center>
+									<div class="media">
 								
-								<div class="media-body">
+										<div class="media-body align-self-center pl-2">
 
-									<span class="app-mid-text">{{ search.data.words.list.count }} posts mention "{{ search.data.words.list.term }}"</span>
+											<span class="app-mid-text">{{ search.data.words.list.count }} posts mention "{{ search.data.words.list.term }}"</span>
 
-								</div>
-								<div class="media-right"></div>
+										</div>
+										<div class="media-right align-self-center">
+											<!-- GO TO ICON -->
+										</div>
 
+									</div>
+								</center>
 							</div>
+
 						</router-link>
 
 						</div>
@@ -174,6 +179,14 @@
 </script>
 
 <style scoped>
+
+  .go-to-posts{
+
+  	width: 100%;
+  	background-color: rgba(211, 211, 211, .125);
+  	border-radius: 10px;
+
+  }
 
    .card{
 

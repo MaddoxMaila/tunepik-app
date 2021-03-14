@@ -140,8 +140,8 @@ class NotificationModelController extends Controller
     protected function ModelNotificationHolder(Notification $mNotification){
 
         $counter = 0;
-        $respCounter = [];
-        $respShared  = [];
+        $respCounter = null;
+        $respShared  = null;
 
             switch ($mNotification->notif_type){
 
@@ -228,7 +228,7 @@ class NotificationModelController extends Controller
             /*
              * Original Post That The Notification Was Done On!
              * */
-            'notif_post'        => $mNotification->post_id == 0 ? [] : (new PostModelController)->getSinglePost($mNotification->post_id)
+            'notif_post'        => $mNotification->post_id == 0 ? null : (new PostModelController)->getSinglePost($mNotification->post_id)
 
         ];
 

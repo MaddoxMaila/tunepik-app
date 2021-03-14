@@ -41,42 +41,42 @@
 				</div>
 				<div class="list-group mt-2" v-else>
 					
-					<div class="list-group-item list-group-item-action p-1 no-border mb-2" v-for="(user, i) in search.data.users.list" :key="i">
+					<div class="list-group-item list-group-item-action no-border" v-for="(user, i) in search.data.users.list" :key="i">
 
 						<div class="media">
 			
 						<!-- User Image! -->
 
-						<img class="rounded-circle" width="35" height="35" :src="'' + user.getImgs().profile" />
+						<Picture :width="40" :height="40" :user="user"></Picture>
 
-						<div class="media-body ml-3">
-							
-							<span class="name-wrapper">
-									
-									<span class="app-bolder-text">
-										{{ user.getBasic().name }}
+						<div class="media-body ml-3 align-self-center">
+
+							<div class="media">
+								
+								<div class="media-body align-self-center">
+									<span class="name-wrapper">
+										<user-name :user="user"></user-name>
 									</span>
+								</div>
 
-								</span>
+								<!-- User Follow Btn Wrapper -->
+								<div class="user-follow-btn align-self-center">
+									
+									<router-link :to="{ name : 'messages', params : { username : user.getBasic().handle } }">
+										<v-button :type="'primary'" @click.native="MESSAGE_USER({ error : false, message : 'User Found', user : user })">Message</v-button>
+									</router-link>
+
+								</div>
+							</div>
+							
 								<div class="text-breaker"></div>
 								<span class="app-grey-text" v-if="user.getInfo().bio == null">
 									<i class="app-fa fas fa-calendar-alt mr-1"></i>
 									Joined On {{ user.getBasic().date }}
 								</span>
 								<span class="app-post-text" v-else>
-
 									{{ user.getInfo().bio }}
-
 								</span>
-
-							</div>
-
-							<!-- User Follow Btn Wrapper -->
-							<div class="user-follow-btn align-self-center">
-								
-								<router-link :to="{ name : 'messages', params : { username : user.getBasic().handle } }">
-									<v-button :type="'primary'" @click.native="MESSAGE_USER({ error : false, message : 'User Found', user : user })">message</v-button>
-								</router-link>
 
 							</div>
 
@@ -85,7 +85,6 @@
 					</div>
 
 				</div>
-
 
 			</div>
 

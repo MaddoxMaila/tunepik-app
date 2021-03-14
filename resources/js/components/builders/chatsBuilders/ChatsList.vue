@@ -151,8 +151,8 @@
 
 	.list-group-item{
 
-		border: 0;
-		/*border-bottom: .03em solid rgba(211, 211, 211, .4);*/
+		border : 0;
+		/*border-bottom: .03em solid rgba(211, 211, 211, .125);*/
 
 	}
 	.card-body,

@@ -10,19 +10,40 @@
 			<Picture :height="40" :width="40" :user="user" ></Picture>
 
 			<div class="media-body ml-3 pr-1">
-				
-				<span class="name-wrapper">
-					
-					<router-link :to="{ name : 'profile', params : { username : user.getBasic().handle } }">
-            <span class="app-bold-text">
-              <a @click="SET_PROFILE(user)">
-								{{ trim(user.getBasic().name, 20) }}
-							</a>
-						</span>
 
-					</router-link>
+        <div class="media">
+          
+          <div class="media-body align-self-center">
+            
+            <span class="name-wrapper">
+          
+              <router-link :to="{ name : 'profile', params : { username : user.getBasic().handle } }">
+                
+                  <a @click="SET_PROFILE(user)">
+                    <!-- <span class="app-bold-text">
+                    {{ trim(user.getBasic().name, 20) }}
+                    </span> -->
+                    <user-name :user="user"></user-name>
+                  </a>
+                
 
-				</span>
+              </router-link>
+
+            </span>
+
+          </div>
+
+          <!-- User Follow Btn Wrapper -->
+          <div class="user-follow-btn align-self-center">
+
+            <BlockButton :user="user" :classes="'btn-sm btn-block'" v-if="user.getActivity().youBlock"></BlockButton>
+            <FollowButton :user="user" :classes="'btn-sm btn-block'" v-else></FollowButton>
+
+          </div>
+
+        </div>
+			
+
 				<div class="text-breaker"></div>
 				<span class="app-grey-text" v-if="user.getInfo().bio == null">
 					<i class="app-fa fas fa-calendar-alt mr-1"></i>
@@ -30,17 +51,9 @@
 				</span>
 				<span class="app-post-text" v-else>
 
-					{{ trim(user.getInfo().bio, 30) }}
+					{{ trim(user.getInfo().bio, 45) }}
 
 				</span>
-
-			</div>
-
-			<!-- User Follow Btn Wrapper -->
-			<div class="user-follow-btn">
-
-				<BlockButton :user="user" :classes="'btn-sm btn-block'" v-if="user.getActivity().youBlock"></BlockButton>
-				<FollowButton :user="user" :classes="'btn-sm btn-block'" v-else></FollowButton>
 
 			</div>
 

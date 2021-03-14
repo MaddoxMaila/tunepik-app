@@ -77,7 +77,7 @@ class PostModelController extends Controller
         /**
          * App Start Up Events
          */
-        event(new \App\Events\UserCounter(\auth()->user()));
+        // event(new \App\Events\UserCounter(\auth()->user()));
 
         /**
          * Returns
