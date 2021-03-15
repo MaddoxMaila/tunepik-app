@@ -246,6 +246,7 @@ Route::group([
 ], function (){
 
     Route::get('notifications', 'NotificationModelController@showNotifications');
+    Route::get('delete', 'NotificationModelController@deleteYourNotifications');
 
 });
 

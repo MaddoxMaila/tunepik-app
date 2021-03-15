@@ -41,11 +41,39 @@ class NotificationModelController extends Controller
 
     }
 
+
+    public function deleteYourNotifications(Request $request){
+
+        $this->setId();
+
+        // Check If User Already Has Notifications
+        $holderNotifications = DB::table('notif_holder')
+                                ->where('owner_id', $this->LoggedIn);
+
+        if($holderNotifications->get()->count() == 0) return $this->error('You Have No Notifications To Delete');
+
+        if($holderNotifications->delete() > 0) {
+
+            return response()->json([
+                    "error" => false,
+                    "message" => "Notifications Deleted"
+                ]);
+        }
+        else{
+
+            return $this->error("Error Deleting Your Notifications");
+
+        }
+
+
+
+    }
+
     public function buildNotificationCounts(){
 
         $this->setId();
 
-        if($this->LoggedIn == 0) return response()->json($this->error('Unauthorized Request'));
+        if($this->LoggedIn == 0) return $this->error('Unauthorized Request');
 
         $mNotifications = Notification::all()
                                             ->where('owner_id', $this->LoggedIn)
@@ -245,10 +273,10 @@ class NotificationModelController extends Controller
         /*
          * Handle And Return All Generic Errors
          * */
-        return [
+        return response()->json([
             'error'     => true,
             'message'   => $e
-        ];
+        ]);
 
     }
 

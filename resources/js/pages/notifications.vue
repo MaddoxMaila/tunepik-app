@@ -35,7 +35,7 @@
 										<span class="block-text app-grey-text-lg">(@{{ model.getBasic().handle }})</span>
 
 									</div>
-									<div class="media-right align-self-start">
+									<div class="media-right align-self-center">
 										
 										<a @click="show = !show">
                 
@@ -47,15 +47,23 @@
 
 								</div>
 								<div class="card-body no-border list-group">
+
+									<div class="list-group-item no-border">
+										
+										<center>
+											<span class="app-small-text">Are You Sure You Want To Delete All Your Notifications?</span>
+										</center>
+
+									</div>
 									
-									<div class="list-group-item">
+									<div class="list-group-item no-border">
                 
-		                <v-button :loading="loading" @click.native="deleteNotifications()" :type="'primary'" class="mobile-share-control-btn yes">
+		                <v-button :loading="loading" @click.native="deleteNotifications()" :type="'danger'" class="mobile-share-control-btn yes">
 		        
-		                  Unfollow 
+		                  Delete&nbsp;<i class="fa fa-times app-fa"></i>
 
 		                </v-button>
-		                <v-button @click.native="show = !show" :type="'danger'" class="mobile-share-control-btn no">
+		                <v-button @click.native="show = !show" :type="'primary'" class="mobile-share-control-btn no">
 		                  Cancel
 		                </v-button>
 
@@ -95,7 +103,7 @@
 
 <script>
 
-   import { mapGetters, mapActions } from 'vuex'
+   import { mapGetters, mapActions, mapMutations } from 'vuex'
    import globs from '../tunepik/attack.js'
    import Navigation from '../components/mobile/root/Navigation'
    import NotificationsBundler from '../components/builders/notifBuilders/NotificationsBundler'
@@ -108,7 +116,8 @@
    	 data : () => ({
    	 	screen : globs.app.isMobile,
    	 	show   : false,
-   	 	loading : false
+   	 	loading : false,
+   	 	message : ''
    	 }),
    	 components : {
 
@@ -119,16 +128,32 @@
    	 methods : {
 
    	 	...mapActions('notifications', ['getNotifications']),
+   	 	...mapMutations('notifications', ['setNotifications']),
+   	 	...mapMutations('tunepik', ['SNACK_BAR']),
    	 	deleteNotifications : async function(){
 
    	 		/* Start Request */
    	 		this.loading = true
 
-   	 	 	const { data } = await axios.post()
+   	 	 	 axios.get('/api/notif/delete').then( data => {
 
+   	 	 	 		this.setNotifications({
 
-   	 		/* End Request */
-   	 		this.loading = false
+   	 	 	 			list 		: false,
+							error 	: data.error,
+							message : data.message,
+							notificationsList : []
+
+   	 	 	 		})
+
+   	 		    this.loading = false
+   	 		    this.SNACK_BAR({ isOpen : true, message : data.message, theme : 'success' })
+
+   	 	 	 }).catch(e => {
+
+   	 	 	 		this.SNACK_BAR({ isOpen : true, message : e.toString(), theme : 'success' })
+
+   	 	 	 })
 
    	 	}
 
