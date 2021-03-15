@@ -9,9 +9,22 @@
 				<div class="media align-self-center">
 					
 					<div class="skeleton-image skeleton-shimmer align-self-center"></div>
-					<div class="media-body ml-2 align-self-center">
+
+					<div class="media-body pl-3 align-self-center">
+
+						<div class="media">
+							
+							<div class="media-body align-self-center">
+								
+								<div class="notif-text"></div>
+
+							</div>
+							<div class="notif-icon align-self-center media-right"></div>
+
+						</div>
 						
-						<div class="notif-block skeleton-shimmer"></div>
+						<!-- Single Post Skeleton -->
+						<SinglePostSkeleton></SinglePostSkeleton>
 
 					</div>
 
@@ -28,6 +41,7 @@
 <script>
 
 		import globs from '../../../tunepik/attack.js'
+		import SinglePostSkeleton from './SinglePostSkeleton'
 		
 		export default {
 
@@ -36,6 +50,9 @@
 				return {
 					limit : globs.limit,
 				};
+			},
+			components : {
+				SinglePostSkeleton
 			}
 
 		};
@@ -48,7 +65,7 @@
 	.list-group-item{
 
 			border : 0;
-			padding: 5px;
+			border-bottom: .04em solid rgba(211, 211, 211, .125);
 
 		}
 
@@ -58,8 +75,9 @@
 			border-radius: 14px;
 		}
 
-		.notif-block{
-			height: 35px;
+		.notif-text{
+			height: 20px;
+			width: 65%;
 			border-radius: 8px;
 		}
 
