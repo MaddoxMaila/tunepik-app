@@ -5,10 +5,13 @@ A Social Networking Web App Using Voice Notes To Post, Comment & Reply To Your F
 
 ## Contents
 
-- [Installing]
-- [Architecture]
-- [Server]
-- [Front-End]
+- Installing
+- Architecture
+- Server
+	- API Routes
+	- Controllers
+	- Models
+- Front-End
 
 
 ## Architecture
@@ -17,15 +20,15 @@ A Social Networking Web App Using Voice Notes To Post, Comment & Reply To Your F
 
 ### Database
 
-**MySQL** database
+*MySQL* database
 
 ### RESTFUL API
 
-**PHP, Laravel**
+*PHP, Laravel*
 
 ### Front-End
 
-**Vuejs, SCSS**
+*Vuejs, SCSS*
 
 
 ## Install
@@ -48,3 +51,48 @@ composer install
 
 
 ## Server
+
+- To Start The Laravel Built-in Server, Command
+```
+php artisan serve
+```
+or
+
+If You Want The To Access The Site Via Your LAN/WI-FI
+```
+php artisan serve --host 0.0.0.0
+```
+
+- ***RESTFUL API Routes***
+
+ - Every API route has to be registered explicitly in [routes/api.php](https://github.com/MaddoxMaila/tunepik-app/routes/)
+
+
+- ***Controller***
+
+ - API Routes use methods defined explicitly in [app/http/controllers](https://github.com/MaddoxMaila/tunepik-app/app/http/controllers)
+
+ - For Sessions We're Using Json Web Tokens
+   
+   *To check if a user is logged in*
+
+   ```php
+   if(auth('api')->check()){
+   	 /* A User Has Logged In */
+   }else{
+   	/* No User Has Logged In */
+   }
+
+   /* Also You Can Use The AUTH middleware in side the constructor of Controller Classes*/
+
+   function __construct(){
+
+   	$this->middleware('auth');
+
+   }
+
+   ```
+
+
+## To Be Continued
+
