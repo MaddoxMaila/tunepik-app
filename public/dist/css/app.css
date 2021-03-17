@@ -64,30 +64,15 @@ section {
   display: block;
 }
 
-/*@media only screen and (max-width : 700px){
-
-    .main-layout.theme-dark{
-
-      $body-bg : #222 !global;
-
-    }
-
-    .main-layout.theme-light{
-
-      //$body-bg : #f7f9fb !global;
-
-    }
-
-}*/
-
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1rem;
   font-weight: 400;
+  line-height: 1.5;
   color: #212529;
   text-align: left;
-  background-color: #fff;
+  background-color: #f7f9fb;
 }
 
 [tabindex="-1"]:focus {
