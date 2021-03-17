@@ -15,7 +15,7 @@
 				
 				<a class="remove-btn" @click="SNACK_BAR({ isOpen : false })">
 					
-					<i class="fa fa-times app-fa" style="color:#fff;"></i>
+					<i class="fa fa-times app-fa" ></i>
 
 				</a>
 
